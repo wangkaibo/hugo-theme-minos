@@ -3,6 +3,7 @@
         <div id="footer-info" class="inner">
             &copy; {{ now.Format "2006"}} {{ or .Site.Author .Site.Title }}&nbsp;
             Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos">Minos</a>
+            &nbsp;Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
         </div>
     </div>
     {{ template "_internal/google_analytics_async.html" . }}
@@ -16,7 +17,28 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
         <script>renderMathInElement(document.body);</script>
+        
     {{ end }}
+    <script>
+        var serviceWorkerUri = '/serviceworker-v1.js';
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register(serviceWorkerUri).then(function () {
+                // Registration was successful. Now, check to see whether the service worker is controlling the page.
+                if (navigator.serviceWorker.controller) {
+                    console.log('Assets cached by the controlling service worker.');
+                } else {
+                    console.log('Please reload this page to allow the service worker to handle network operations.');
+                }
+            }).catch(function (error) {
+                console.log('ERROR: ' + error);
+            });
+
+        } else {
+            // The current browser doesn't support service workers.
+            console.log('Service workers are not supported in the current browser.');
+        }
+    </script>
     <script>
         document.getElementById('main-nav-toggle').addEventListener('click', function () {
             var header = document.getElementById('header');
