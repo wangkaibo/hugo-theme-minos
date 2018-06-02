@@ -15,7 +15,7 @@
 
   self.importScripts('/sw-toolbox.js');
 
-  self.toolbox.options.debug = true;
+  self.toolbox.options.debug = false;
 
   // Cache own static assets
   self.toolbox.router.get('/webfonts/(.*)', self.toolbox.cacheFirst, {
