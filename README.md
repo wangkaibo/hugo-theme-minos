@@ -63,6 +63,18 @@ paginate = 10
     googleAnalytics = "UA-123-45"
 ```
 
+### BaiDu Analytics
+```
+[params]
+    BaiduAnalytics = ""
+```
+
+### BaiDu AutoPush
+```
+[params]
+    BaiduAutoPush = true
+```
+
 ### KaTeX
 ```
 [params]
